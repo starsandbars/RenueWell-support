@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RenueWell — Support &amp; Privacy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #1A7A6E;
+      --teal-mid:    #25a696;
+      --teal-light:  #e6f4f2;
+      --teal-pale:   #f4faf9;
+      --ink:         #162420;
+      --ink-mid:     #2e4a44;
+      --muted:       #6b8c86;
+      --rule:        #cce4e0;
+      --bg:          #f7fcfb;
+      --white:       #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(247,252,251,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 40px 80px;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: var(--teal-light);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--teal);
+      margin: 48px auto;
+      opacity: 0.4;
+      border-radius: 2px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .section-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--teal-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── SUPPORT CARDS ── */
+    .support-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .support-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 28px 32px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .support-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 4px 24px rgba(26,122,110,0.08);
+    }
+
+    .support-card h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .support-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .support-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal-light);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .support-card a:hover { border-color: var(--teal); }
+
+    .faq-item {
+      border-top: 1px solid var(--rule);
+      padding: 20px 0;
+    }
+
+    .faq-item:last-child { border-bottom: 1px solid var(--rule); }
+
+    .faq-item h3 {
+      font-size: 0.93rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── PRIVACY ── */
+    .privacy-intro {
+      background: var(--teal-light);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      font-size: 0.93rem;
+      color: var(--teal);
+      font-weight: 400;
+      line-height: 1.7;
+      border: 1px solid var(--rule);
+    }
+
+    .policy-block {
+      margin-bottom: 36px;
+    }
+
+    .policy-block h3 {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .policy-block p {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .policy-block p:last-child { margin-bottom: 0; }
+
+    .policy-list {
+      list-style: none;
+      margin: 10px 0;
+    }
+
+    .policy-list li {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      padding: 7px 0 7px 18px;
+      position: relative;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.6;
+    }
+
+    .policy-list li:last-child { border-bottom: none; }
+
+    .policy-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: 0.45;
+    }
+
+    .policy-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 36px 0;
+    }
+
+    .effective-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── UTILS ── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 120px 24px 60px; }
+      .section { padding: 0 24px 80px; }
+      footer { padding: 24px; flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#" onclick="showPage('support')">RenueWell</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('support')" id="nav-support" class="active">Support</a></li>
+    <li><a href="#" onclick="showPage('privacy')" id="nav-privacy">Privacy</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════ SUPPORT PAGE ═══════════════════════════ -->
+<div id="page-support" class="page active">
+
+  <div class="hero">
+    <span class="hero-eyebrow">App Support</span>
+    <h1>How can we<br><em>help you?</em></h1>
+    <p>RenueWell is built for people in cancer remission. If something isn't working or you have a question, we're here.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h2>Get in Touch</h2>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <h3>Email Support</h3>
+        <p>For bug reports, feature requests, or any questions about RenueWell — email is the best way to reach us. We aim to respond within 48 hours.</p>
+        <a href="mailto:alethea.liu09@gmail.com">
+          alethea.liu09@gmail.com
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      </div>
+      <h2>Common Questions</h2>
+    </div>
+
+    <div>
+      <div class="faq-item">
+        <h3>Is my health data backed up anywhere?</h3>
+        <p>No. All data is stored exclusively on your device using Apple's SwiftData framework. It is never transmitted to any server. If you delete the app, your data is permanently deleted. We recommend using iCloud device backup if you want to preserve your logs.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How do I export a PDF to share with my doctor?</h3>
+        <p>Tap the Habits tab and look for the Export option, or navigate to the PDF export screen. Enter your name (optional), choose a date range, and tap Generate. You can then share the PDF directly via the iOS share sheet — by email, AirDrop, or any other app.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I change the language after onboarding?</h3>
+        <p>Yes. Language preferences can be updated in the app's settings. RenueWell is available in English, Spanish, French, Simplified Chinese, and Brazilian Portuguese.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What happens if I log symptoms more than once in a day?</h3>
+        <p>RenueWell saves one entry per day. If you log again on the same day, your new entry replaces the previous one. Make sure your entry is complete before closing the log screen.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is RenueWell a medical app?</h3>
+        <p>No. RenueWell is a personal tracking and communication tool designed to help you record how you feel and share that information with your care team. It does not provide diagnoses, clinical recommendations, or medical advice. Always consult your healthcare provider for medical guidance.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>I found a bug — how do I report it?</h3>
+        <p>Please email us at <a href="mailto:alethea.liu09@gmail.com" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--rule)">alethea.liu09@gmail.com</a> with a brief description of what happened and which iPhone model and iOS version you're using. Screenshots are always helpful.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PRIVACY PAGE ═══════════════════════════ -->
+<div id="page-privacy" class="page">
+
+  <div class="hero">
+    <span class="hero-eyebrow">Privacy Policy</span>
+    <h1>Your data stays<br><em>with you.</em></h1>
+    <p>RenueWell never collects, transmits, or shares your health information. Everything you log remains on your device.</p>
+  </div>
+
+  <div class="section">
+
+    <p class="effective-date">Effective date: June 3, 2026 &nbsp;·&nbsp; Last updated: June 3, 2026</p>
+
+    <div class="privacy-intro">
+      RenueWell is built on a simple principle: your health data belongs to you alone. Everything you log stays on your device. We never collect, transmit, or share your information with anyone — ever.
+    </div>
+
+    <div class="policy-block">
+      <h3>1 — Who We Are</h3>
+      <p>RenueWell is a personal health tracking application for iOS designed for people in cancer remission. References to "we," "us," or "our" refer to the developer of RenueWell. For questions, contact us at <a href="mailto:alethea.liu09@gmail.com" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--rule)">alethea.liu09@gmail.com</a>.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>2 — What Data the App Stores</h3>
+      <p>RenueWell allows you to record and track personal health information, including:</p>
+      <ul class="policy-list">
+        <li>Symptom logs and severity ratings</li>
+        <li>Mental health and emotional wellbeing scores</li>
+        <li>Personal habits and completion records</li>
+        <li>Free-text notes</li>
+        <li>Your name (optional, used only for PDF export headers)</li>
+        <li>Notification preferences</li>
+        <li>Your chosen display language</li>
+      </ul>
+      <p style="margin-top:14px; font-weight:400; color:var(--teal)">All of this data is stored exclusively on your device using Apple's SwiftData framework. It never leaves your device.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>3 — How Your Data Is Used</h3>
+      <p>The data you enter is used solely to provide the app's features: displaying your health trends, generating PDF reports for personal use or to share with your care team, and tracking your habits over time.</p>
+      <p>We do not use your data for advertising, analytics, machine learning, or any purpose beyond operating the app on your device.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>4 — Data Sharing and Third Parties</h3>
+      <p>We do not share your data with any third party. RenueWell contains:</p>
+      <ul class="policy-list">
+        <li>No analytics SDKs</li>
+        <li>No advertising frameworks</li>
+        <li>No crash reporting services that transmit data off-device</li>
+        <li>No cloud sync or remote storage</li>
+        <li>No user accounts or authentication services</li>
+      </ul>
+      <p style="margin-top:12px">The only network activity the app performs is local notifications, handled entirely by Apple's operating system on your device.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>5 — PDF Export</h3>
+      <p>RenueWell can generate a PDF summary of your health data. This PDF is created entirely on your device. We never receive, access, or store a copy of any exported PDF. When you share a PDF via iOS's share sheet, it is your choice alone where that file goes.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>6 — Children's Privacy</h3>
+      <p>RenueWell is not directed at children under the age of 13. We do not knowingly collect any information from children. If you are under 13, please do not use this app.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>7 — Data Retention and Deletion</h3>
+      <p>Your data exists only on your device for as long as the app is installed. To permanently delete all of your data, delete RenueWell from your device. iOS will remove all associated data at that point. There is no server-side copy to request deletion of.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>8 — Security</h3>
+      <p>Your data is protected by your device's built-in security features, including passcode, Face ID, and Touch ID. We recommend keeping your device's operating system up to date. Because your data never leaves your device, it is not exposed to network-based risks.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>9 — Changes to This Policy</h3>
+      <p>If we make material changes to this policy, we will update the effective date at the top of this page and, where appropriate, provide notice within the app. Continued use of RenueWell after changes are posted constitutes your acceptance of the updated policy.</p>
+    </div>
+
+    <hr class="policy-rule" />
+
+    <div class="policy-block">
+      <h3>10 — Contact</h3>
+      <p>For any questions or concerns about this privacy policy, please contact:</p>
+      <p style="margin-top:10px"><a href="mailto:alethea.liu09@gmail.com" style="color:var(--teal);text-decoration:none;font-weight:500;border-bottom:1px solid var(--rule)">alethea.liu09@gmail.com</a></p>
+      <p style="margin-top:8px">We will respond to privacy-related inquiries within 30 days.</p>
+    </div>
+
+    <div style="margin-top:16px; padding:20px 24px; background:var(--teal-pale); border-radius:12px; border:1px solid var(--rule)">
+      <p style="font-size:0.82rem; color:var(--muted); line-height:1.7">RenueWell is not affiliated with or endorsed by any healthcare provider or cancer organisation. It is not a medical device and does not provide diagnoses, clinical advice, or treatment recommendations. Always consult a qualified healthcare professional for medical guidance.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <span class="brand">RenueWell</span>
+  <p>&copy; 2026 RenueWell &nbsp;·&nbsp; <a href="mailto:alethea.liu09@gmail.com" style="color:var(--muted);text-decoration:none">alethea.liu09@gmail.com</a></p>
+</footer>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('nav-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+</script>
+
+</body>
+</html>
