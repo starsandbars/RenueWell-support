@@ -2165,7 +2165,7 @@
     const msg = document.getElementById('newsletterMsg');
     // ▼ REPLACE this URL with your Mailchimp form action URL
     const MAILCHIMP_URL = 'https://assets.mailerlite.com/jsonp/2471831/forms/191305466495632671/subscribe';
-    if (MAILCHIMP_URL === 'https://assets.mailerlite.com/jsonp/2471831/forms/191305466495632671/subscribe') {
+    if (!MAILCHIMP_URL || MAILCHIMP_URL === 'YOUR_MAILERLITE_ACTION_URL_HERE') {
       msg.style.color = 'rgba(255,255,255,0.6)';
       msg.textContent = '(Newsletter not yet connected — see setup instructions.)';
       return;
