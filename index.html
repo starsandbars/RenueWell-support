@@ -1806,6 +1806,7 @@
     <div class="post-meta">
       <span class="blog-category" id="postCategory"></span>
       <span class="blog-date" id="postDate"></span>
+      <span class="blog-date" id="postAuthor"></span>
     </div>
     <div class="post-body" id="postBody"></div>
   </div>
@@ -2141,6 +2142,7 @@
     document.getElementById('postTitle').textContent = post.title;
     document.getElementById('postCategory').textContent = post.category;
     document.getElementById('postDate').textContent = post.date;
+    document.getElementById('postAuthor').textContent = post.author ? 'By ' + post.author : '';
     const img = post.image ? `<img src="${post.image}" alt="${post.title}" style="width:100%; border-radius:16px; margin-bottom:32px;" />` : '';
     const paragraphs = post.content.split('\n\n').map(p => 
       p.trim().startsWith('<') ? p : `<p>${p}</p>`
